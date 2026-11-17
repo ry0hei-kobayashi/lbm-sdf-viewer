@@ -14,5 +14,18 @@
 <div id="main">
   <div id="bar">読み込み中…</div>
   <iframe id="view" title="Meshcat"></iframe>
+  <details id="parts" open>
+    <summary>部品と寸法 <span id="pcount"></span></summary>
+    <div id="ptools">
+      <input id="pq" type="search" placeholder="部品名で絞り込み" autocomplete="off">
+      <label><input id="pcol" type="checkbox"> 衝突形状も表示</label>
+      <button id="showall" type="button" disabled>全部品を表示</button>
+    </div>
+    <p id="phelp">部品の行をクリックすると、その部品だけを 3D 表示します。寸法の単位は mm です。メッシュの寸法は、部品の座標軸 (x, y, z) に沿った箱で囲んだときの3辺です。</p>
+    <div id="pwrap"><table id="ptable">
+      <thead><tr><th>部品 / 形状名</th><th>種別</th><th>形状</th><th>寸法 [mm]</th></tr></thead>
+      <tbody id="pbody"></tbody>
+    </table></div>
+  </details>
 </div>
 <script src="/static/app.js"></script></body></html>

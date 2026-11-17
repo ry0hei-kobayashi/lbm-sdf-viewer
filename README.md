@@ -18,6 +18,10 @@ docker compose up
 - 左の一覧からモデルを選ぶと、右側の 3D 表示が切り替わります (切り替えに数秒かかります)。
 - 検索欄で名前を絞り込めます (例: `station`, `flir`, `mug`)。
 - 「座標軸を表示」で各リンクの座標軸が出ます。
+- 3D 表示の下の「部品と寸法」に、表示中モデルの部品 (リンク) ごとの寸法が mm で出ます。
+  部品の行をクリックするとその部品だけが 3D 表示され、もう一度クリックするか「全部品を表示」で戻ります。
+  メッシュの寸法は、部品の座標軸 (x, y, z) に沿った箱で囲んだときの3辺です。
+  「衝突形状も表示」で、衝突判定用の箱や円柱の寸法も出ます。
 - 3D 表示の右上 Controls で、関節のスライダー操作と、衝突形状の表示
   (Scene > drake > proximity) ができます。
 - Controls の「Stop Running」を押すと 3D 表示が止まります。一覧からモデルを選び直せば再開します。
@@ -67,4 +71,5 @@ ssh -N -L 8080:localhost:8080 -L 7000:localhost:7000 <ホスト>
 ```bash
 docker compose run --rm viewer python3 app.py list    # モデル一覧
 docker compose run --rm viewer python3 app.py check   # 全モデルの読み込み確認
+docker compose run --rm viewer python3 app.py parts robots/schunk_grippers/flir_assembly_primitives.sdf   # 部品と寸法
 ```
