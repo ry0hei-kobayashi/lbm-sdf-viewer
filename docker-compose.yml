@@ -1,0 +1,13 @@
+services:
+  viewer:
+    build: .
+    image: lbm-model-viewer:1.1.0
+    ports:
+      - "${WEB_PORT:-8080}:8080"      # モデル一覧ページ
+      - "${MESHCAT_PORT:-7000}:7000"  # Meshcat (3D 表示)
+    environment:
+      # ブラウザから見たポート。上の割り当てと同じ値にする。
+      PUBLIC_WEB_PORT: "${WEB_PORT:-8080}"
+      PUBLIC_MESHCAT_PORT: "${MESHCAT_PORT:-7000}"
+    init: true
+    restart: unless-stopped
